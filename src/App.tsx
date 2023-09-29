@@ -1,6 +1,9 @@
 import Login from "./pages/login";
 import { GlobalStyles} from "@mui/material"
 import { createTheme, ThemeProvider} from '@mui/material/styles';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Home from "./pages/login/Home";
+
 const themePrimary = createTheme({
   palette: {
     primary: {
@@ -28,7 +31,12 @@ function App() {
   return (
     <ThemeProvider theme={themePrimary} >
     <GlobalStyles styles={{body:{backgroundColor:"#88a0c8"}}}></GlobalStyles>
-      <Login></Login>
+      <Router>
+        <Routes>
+        <Route path="/" element= {<Login/>} />
+        <Route path="/Inicio" element= {<Home/>} />
+        </Routes>
+      </Router>
     </ThemeProvider>
 
   )
