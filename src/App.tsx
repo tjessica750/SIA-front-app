@@ -1,8 +1,8 @@
 import Login from "./pages/login";
-import { GlobalStyles} from "@mui/material"
-import { createTheme, ThemeProvider} from '@mui/material/styles';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Home from "./pages/login/Home";
+import { GlobalStyles } from "@mui/material";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home/home";
 
 const themePrimary = createTheme({
   palette: {
@@ -17,29 +17,31 @@ const themePrimary = createTheme({
     },
     text: {
       primary: "#020d18",
-      secondary: "#020d18"
+      secondary: "#020d18",
     },
-    background:{
-      default:  "#020d18",
-    }
+    background: {
+      default: "#020d18",
+    },
+  },
+  typography: {
+    fontFamily:"monospace"
   }
-
 });
 
 function App() {
-
   return (
-    <ThemeProvider theme={themePrimary} >
-    <GlobalStyles styles={{body:{backgroundColor:"#88a0c8"}}}></GlobalStyles>
+    <ThemeProvider theme={themePrimary}>
+      <GlobalStyles
+        styles={{ body: { backgroundColor: "#88a0c8" } }}
+      ></GlobalStyles>
       <Router>
         <Routes>
-        <Route path="/" element= {<Login/>} />
-        <Route path="/Inicio" element= {<Home/>} />
+          <Route path="/" element={<Login />} />
+          <Route path="/Inicio" element={<Home />} />
         </Routes>
       </Router>
     </ThemeProvider>
-
-  )
+  );
 }
 
-export default App
+export default App;
