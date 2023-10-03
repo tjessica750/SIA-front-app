@@ -1,61 +1,67 @@
-import SideBar from "../../container/sidebar/sidebar";
 import HomeIcon from "@mui/icons-material/Home";
 import PostAddIcon from "@mui/icons-material/PostAdd";
 import ListIcon from "@mui/icons-material/List";
 import PlaylistRemoveIcon from "@mui/icons-material/PlaylistRemove";
 import HistoryIcon from "@mui/icons-material/History";
 import SettingsIcon from "@mui/icons-material/Settings";
-import ExitToAppIcon from "@mui/icons-material/ExitToApp";
+import AssignmentIcon from "@mui/icons-material/Assignment";
+import AssessmentIcon from "@mui/icons-material/Assessment";
 import { Route, Routes } from "react-router-dom";
 import { Transaccion } from "../transaccion/transaccion";
+import { HomeLayout } from "../../container/sidebar/homelayout";
 
 const optionsList = [
   {
     title: "Inicio",
     Icon: HomeIcon,
-    path: "/Inicio",
+    path: "/home/Inicio",
   },
   {
     title: "Transaccion",
-    Icon: PostAddIcon,
-    path: "/transaccion",
-  },
-  {
-    title: "Orden",
-    Icon: ListIcon,
-    path: "/orden",
-  },
-  {
-    title: "Pendientes",
-    Icon: PlaylistRemoveIcon,
-    path: "/Pendientes",
-  },
-  {
-    title: "Historial",
-    Icon: HistoryIcon,
-    path: "/Historial",
+    Icon: AssessmentIcon,
+    path: "/home/transactions",
+    subs: [
+      {
+        title: "Nueva",
+        Icon: PostAddIcon,
+        path: "/home/transactions/new",
+      },
+      {
+        title: "Ordenes De Trabajo",
+        Icon: ListIcon,
+        path: "/home/orden",
+      },
+      {
+        title: "Pendientes",
+        Icon: PlaylistRemoveIcon,
+        path: "/home/Pendientes",
+      },
+      {
+        title: "Diagnostico",
+        Icon: AssignmentIcon,
+        path: "/home/Historial",
+      },
+      {
+        title: "Historial",
+        Icon: HistoryIcon,
+        path: "/home/Historial",
+      },
+    ],
   },
   {
     title: "Configuracion",
     Icon: SettingsIcon,
-    path: "/Configuracion",
-  },
-  {
-    title: "Cerrar Sesion",
-    Icon: ExitToAppIcon,
-    path: "/Cerrar-sesion",
+    path: "/home/Configuracion",
   },
 ];
 
 const Home = () => {
   return (
-    <>
-      <SideBar optionsList={optionsList}>
-        <Routes>
-          <Route path="inicio/transaccion" element={<Transaccion />} />
-        </Routes>
-      </SideBar>
-    </>
+    <HomeLayout listOptions={optionsList}>
+      <Routes>
+        <Route path="/transactions" element={<Transaccion />} />
+      </Routes>
+    </HomeLayout>
   );
 };
 

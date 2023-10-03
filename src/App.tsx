@@ -2,6 +2,7 @@ import Login from "./pages/login";
 import { GlobalStyles } from "@mui/material";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
 import Home from "./pages/Home/home";
 
 const themePrimary = createTheme({
@@ -24,8 +25,8 @@ const themePrimary = createTheme({
     },
   },
   typography: {
-    fontFamily:"monospace"
-  }
+    fontFamily: "monospace",
+  },
 });
 
 function App() {
@@ -37,7 +38,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Login />} />
-          <Route path="/Inicio" element={<Home />} />
+          <Route path="/home/*" element={<Home />} />
         </Routes>
       </Router>
     </ThemeProvider>

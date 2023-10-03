@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from "react";
 import { styled, useTheme, Theme, CSSObject } from "@mui/material/styles";
 import Box from "@mui/material/Box";
@@ -10,10 +11,10 @@ import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
+import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import { Link } from "react-router-dom";
 
 const drawerWidth = 240;
@@ -88,8 +89,7 @@ const Drawer = styled(MuiDrawer, {
 }));
 
 const SideBar: React.FC<{
-  children: React.JSX.Element;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  children: any;
   optionsList: Array<{ title: string; Icon: any; path: string }>;
 }> = ({ children, optionsList }) => {
   const theme = useTheme();
@@ -132,31 +132,53 @@ const SideBar: React.FC<{
           </IconButton>
         </DrawerHeader>
         <Divider />
-        <Divider />
         <List>
-          {optionsList.map(({ Icon, title }) => (
-            <ListItem key={title} disablePadding sx={{ display: "block" }}>
-              <ListItemButton
+          {optionsList.map(({ Icon, title, path }) => (
+            <ListItemButton
+              key={title}
+              sx={{
+                minHeight: 48,
+                justifyContent: open ? "initial" : "center",
+                px: 2.5,
+              }}
+              {...{ component: Link, to: path }}
+            >
+              <ListItemIcon
                 sx={{
-                  minHeight: 48,
-                  justifyContent: open ? "initial" : "center",
-                  px: 2.5,
+                  minWidth: 0,
+                  mr: open ? 3 : "auto",
+                  justifyContent: "center",
                 }}
-               
               >
-                <ListItemIcon
-                  sx={{
-                    minWidth: 0,
-                    mr: open ? 3 : "auto",
-                    justifyContent: "center",
-                  }}
-                >
-                  <Icon />
-                </ListItemIcon>
-                <ListItemText primary={title} sx={{ opacity: open ? 1 : 0 }} />
-              </ListItemButton>
-            </ListItem>
+                <Icon />
+              </ListItemIcon>
+              <ListItemText primary={title} sx={{ opacity: open ? 1 : 0 }} />
+            </ListItemButton>
           ))}
+
+          <ListItemButton
+            sx={{
+              minHeight: 48,
+              justifyContent: open ? "initial" : "center",
+              px: 2.5,
+              position: "fixed",
+              bottom: 0,
+            }}
+          >
+            <ListItemIcon
+              sx={{
+                minWidth: 0,
+                mr: open ? 3 : "auto",
+                justifyContent: "center",
+              }}
+            >
+              <ExitToAppIcon />
+            </ListItemIcon>
+            <ListItemText
+              primary={"cerrar sesion"}
+              sx={{ opacity: open ? 1 : 0 }}
+            />
+          </ListItemButton>
         </List>
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>

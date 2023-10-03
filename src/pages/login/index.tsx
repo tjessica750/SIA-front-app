@@ -17,7 +17,7 @@ const Login: React.FC = () => {
       sx={{ display: "flex", alignItems: "center", flexDirection: "column",  paddingTop:"60px"  }}
     >
       <Card sx={{ width: "auto", textAlign: "center"}}>
-        <CardContent sx={{ margin: 10, paddingLeft:10,paddingRight:10 }}>
+        <CardContent sx={{ margin: 10}}>
           <Box sx={{ display: "flex", justifyContent: "center" }}>
             <Avatar
               src={logo}
