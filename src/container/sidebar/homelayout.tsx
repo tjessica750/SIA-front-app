@@ -12,7 +12,7 @@ import ListItemText from "@mui/material/ListItemText";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import { styled, Theme, CSSObject } from "@mui/material/styles";
-import { Avatar, Collapse, SvgIconTypeMap } from "@mui/material";
+import { Avatar, Collapse, Divider, SvgIconTypeMap } from "@mui/material";
 
 import logo from "../../assets/LOGO-NEGRO-SIN-FONDO.png";
 import { Link } from "react-router-dom";
@@ -82,6 +82,7 @@ const ItemList: React.FC<{ option: ListOption; mobile: boolean }> = ({
 
   return (
     <>
+      <Divider />
       <ListItem key={title} disablePadding>
         <ListItemButton
           sx={{
@@ -107,8 +108,12 @@ const ItemList: React.FC<{ option: ListOption; mobile: boolean }> = ({
       {subs ? (
         <Collapse in={open} timeout="auto" unmountOnExit>
           <List component="div" disablePadding>
-            {subs.map(({ Icon, title }) => (
-              <ListItemButton key={title} sx={{ pl: 5 }}>
+            {subs.map(({ Icon, title, path }) => (
+              <ListItemButton
+                key={title}
+                sx={{ pl: 5 }}
+                {...{ component: Link, to: path }}
+              >
                 <ListItemIcon>
                   <Icon />
                 </ListItemIcon>
@@ -132,7 +137,7 @@ const DrawerContent: React.FC<{
         <Box sx={{ display: "flex", justifyContent: "center" }}>
           <Avatar
             src={logo}
-            sx={{ width: "100px", height: "100px", m: 3 }}
+            sx={{ width: "150px", height: "150px", m: 3 }}
           ></Avatar>
         </Box>
       )}
@@ -181,13 +186,16 @@ export const HomeLayout: React.FC<HomeLayoutProps> = (props) => {
       >
         <Toolbar>
           <Typography variant="h6" noWrap component="div">
-            Responsive drawer
+            SIA De Colombia
           </Typography>
         </Toolbar>
       </AppBar>
       <Box
         component="nav"
-        sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
+        sx={{
+          width: { sm: drawerWidth },
+          flexShrink: { sm: 0 },
+        }}
         aria-label="mailbox folders"
       >
         <MobileDrawer variant="permanent" open={false}>

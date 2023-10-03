@@ -33,7 +33,7 @@ function App() {
   return (
     <ThemeProvider theme={themePrimary}>
       <GlobalStyles
-        styles={{ body: { backgroundColor: "#88a0c8" } }}
+        styles={{ body: { backgroundColor: "white" } }}
       ></GlobalStyles>
       <Router>
         <Routes>

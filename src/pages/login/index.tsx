@@ -7,6 +7,7 @@ import {
   TextField,
   Button,
   Typography,
+  GlobalStyles,
 } from "@mui/material";
 
 import logo from "../../assets/LOGO-NEGRO-SIN-FONDO.png";
@@ -16,6 +17,9 @@ const Login: React.FC = () => {
     <Box
       sx={{ display: "flex", alignItems: "center", flexDirection: "column",  paddingTop:"60px"  }}
     >
+      <GlobalStyles
+        styles={{ body: { backgroundColor: "#88a0c8" } }}
+      />
       <Card sx={{ width: "auto", textAlign: "center"}}>
         <CardContent sx={{ margin: 10}}>
           <Box sx={{ display: "flex", justifyContent: "center" }}>

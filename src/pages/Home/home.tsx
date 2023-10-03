@@ -24,7 +24,7 @@ const optionsList = [
       {
         title: "Nueva",
         Icon: PostAddIcon,
-        path: "/home/transactions/new",
+        path: "/home/transaction/new",
       },
       {
         title: "Ordenes De Trabajo",
@@ -59,7 +59,7 @@ const Home = () => {
   return (
     <HomeLayout listOptions={optionsList}>
       <Routes>
-        <Route path="/transactions" element={<Transaccion />} />
+        <Route path="/transaction/new" element={<Transaccion />} />
       </Routes>
     </HomeLayout>
   );
